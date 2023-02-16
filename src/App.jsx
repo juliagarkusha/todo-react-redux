@@ -1,35 +1,22 @@
+// External deps
 import React, { useEffect } from "react";
+
+// Internal deps
 import TodoList from "./components/common/TodoList";
 import TodoForm from "./components/common/TodoForm";
-import useTodo from "./hooks/useTodo";
+
+// Local deps
 import './App.scss';
 
 function App() {
-  const {
-    list,
-    editableTodo,
-    onSubmitTodo,
-    onEditTodo,
-    onRemoveTodo,
-    onToggleStatus,
-  } = useTodo();
-
   useEffect(() => {
-    document.title = 'Domashka28';
+    document.title = 'todo-react-redux';
   }, []);
 
   return (
     <main className="app">
-      <TodoForm
-        editableTodo={editableTodo}
-        onFormSubmitHandler={onSubmitTodo}
-      />
-      <TodoList
-        todoList={list}
-        onEditTodo={onEditTodo}
-        onRemoveTodo={onRemoveTodo}
-        onToggleStatus={onToggleStatus}
-      />
+      <TodoForm />
+      <TodoList />
     </main>
   );
 }

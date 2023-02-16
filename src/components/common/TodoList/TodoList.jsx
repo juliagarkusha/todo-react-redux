@@ -1,13 +1,11 @@
+import {useSelector} from "react-redux";
+
 import TodoItem from "../TodoItem";
+
 import "./TodoList.scss";
 
-function TodoList (props) {
-  const {
-    todoList,
-    onEditTodo,
-    onRemoveTodo,
-    onToggleStatus,
-  } = props;
+function TodoList () {
+  const todoList = useSelector(state => state.todo.list);
 
   return (
     <div className="todo__list">
@@ -15,9 +13,6 @@ function TodoList (props) {
         <TodoItem
           key={todoItem.id}
           todo={todoItem}
-          onEditTodo={onEditTodo}
-          onRemoveTodo={onRemoveTodo}
-          onToggleStatus={onToggleStatus}
         />
       ))}
     </div>

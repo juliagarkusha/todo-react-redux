@@ -1,19 +1,24 @@
+// External deps
 import {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+
+// Internal deps
 import Input from "../../ui/Fields/Input";
+import {create} from "../../../store/actions/todo";
+
+// Local deps
 import "./TodoForm.scss";
 
-function TodoForm (props) {
-  const {
-    editableTodo,
-    onFormSubmitHandler,
-  } = props;
-
+function TodoForm () {
+  const dispatch = useDispatch();
   const [ inputValue, setInputValue ] = useState('');
+  const editableTodo = useSelector(state => state.todo.editTodo);
   const title = editableTodo?.title ?? '';
   useEffect(() => {
     if(!editableTodo) {
       return;
     }
+
     setInputValue(editableTodo?.title);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title]);
@@ -29,7 +34,7 @@ function TodoForm (props) {
       return;
     }
 
-    onFormSubmitHandler({...editableTodo, title: inputValue});
+    dispatch(create({...editableTodo, title: inputValue}))
     setInputValue('');
   }
 
