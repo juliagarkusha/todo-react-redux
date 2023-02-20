@@ -1,25 +1,31 @@
+// External deps
+import {useDispatch} from "react-redux";
+
+// Internal deps
 import Button from "../../ui/Button";
 import Checkbox from "../../ui/Fields/Checkbox";
+import {remove, edit, toggleStatus} from "../../../store/actions/todo";
+
+// Local deps
 import './TodoItem.scss';
 
 function TodoItem (props) {
   const {
-    todo,
-    onEditTodo,
-    onRemoveTodo,
-    onToggleStatus,
+    todo
   } = props;
 
+  const dispatch = useDispatch();
+
   function onEditButtonClick () {
-    onEditTodo(todo);
+    dispatch(edit(todo))
   }
 
   function onRemoveButtonClick () {
-    onRemoveTodo(todo.id);
+    dispatch(remove(todo.id))
   }
 
   function onCheckboxChange () {
-    onToggleStatus(todo);
+    dispatch(toggleStatus(todo))
   }
 
   return(
