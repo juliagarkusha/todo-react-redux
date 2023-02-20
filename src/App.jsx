@@ -10,7 +10,7 @@ import './App.scss';
 
 function App() {
   useEffect(() => {
-    document.title = 'todo-react-redux';
+    document.title = 'todo-redux-server';
   }, []);
 
   return (

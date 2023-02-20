@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 
 // Internal deps
 import Input from "../../ui/Fields/Input";
-import {create} from "../../../store/actions/todo";
+import { save } from "../../../store/actions/todo";
 
 // Local deps
 import "./TodoForm.scss";
@@ -34,7 +34,7 @@ function TodoForm () {
       return;
     }
 
-    dispatch(create({...editableTodo, title: inputValue}))
+    dispatch(save({...editableTodo, title: inputValue}))
     setInputValue('');
   }
 
