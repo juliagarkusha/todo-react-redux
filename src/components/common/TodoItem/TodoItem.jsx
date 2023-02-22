@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 // Internal deps
 import Button from "../../ui/Button";
 import Checkbox from "../../ui/Fields/Checkbox";
-import {remove, edit, toggleStatus} from "../../../store/actions/todo";
+import {deleteTodo, edit, toggleTodoStatus} from "../../../store/actions/todo";
 
 // Local deps
 import './TodoItem.scss';
@@ -21,11 +21,11 @@ function TodoItem (props) {
   }
 
   function onRemoveButtonClick () {
-    dispatch(remove(todo.id))
+    dispatch(deleteTodo(todo.id))
   }
 
   function onCheckboxChange () {
-    dispatch(toggleStatus(todo))
+    dispatch(toggleTodoStatus(todo))
   }
 
   return(
